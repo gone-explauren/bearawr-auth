@@ -26,6 +26,7 @@ describe('Auth Router', () => {
 
     const response = await mockRequest.post('/signup').send(userData.testUser);
     const userObject = response.body;
+    console.log(response.body);
 
     expect(response.status).toBe(201);
     expect(userObject.token).toBeDefined();
@@ -38,6 +39,7 @@ describe('Auth Router', () => {
 
     const response = await mockRequest.post('/signin')
       .auth(username, password);
+    console.log(response.body);
 
     const userObject = response.body;
     expect(response.status).toBe(200);
@@ -54,7 +56,7 @@ describe('Auth Router', () => {
       .auth(username, password);
 
     accessToken = response.body.token;
-
+    console.log('SIGNIN TOKEN',accessToken)
     // First, use basic to login to get a token
     const bearerResponse = await mockRequest
       .get('/users')
@@ -102,7 +104,7 @@ describe('Auth Router', () => {
   });
 
   it('Succeeds with a valid token', async () => {
-
+    console.log('VALID TOKEN /users', accessToken);
     const response = await mockRequest.get('/users')
       .set('Authorization', `Bearer ${accessToken}`);
 
