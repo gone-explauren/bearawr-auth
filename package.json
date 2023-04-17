@@ -1,11 +1,11 @@
 {
   "name": "server",
   "version": "1.0.0",
-  "description": "",
+  "description": "code-401 lab-07",
   "main": "index.js",
   "scripts": {
-    "start": "NODE_ENV=production node index.js",
-    "dev": "NODE_ENV=development nodemon index.js",
+    "start": "node index.js",
+    "dev": "nodemon index.js",
     "init:config": "sequelize init:config",
     "db:create": "sequelize db:create",
     "watch": "NODE_ENV=development nodemon index.js",
